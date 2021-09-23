@@ -2,15 +2,15 @@
 
 软件使用：
 
-![有道智云](README/%E6%9C%89%E9%81%93%E6%99%BA%E4%BA%91.png)有道智云AI开放平台；
+![有道智云](README.assets/%E6%9C%89%E9%81%93%E6%99%BA%E4%BA%91.png)有道智云AI开放平台；
 
-![百度翻译](README/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91.png)百度开放平台；
+![百度翻译](README.assets/%E7%99%BE%E5%BA%A6%E7%BF%BB%E8%AF%91.png)百度开放平台；
 
-![谷歌翻译](README/%E8%B0%B7%E6%AD%8C%E7%BF%BB%E8%AF%91.png)谷歌翻译；
+![谷歌翻译](README.assets/%E8%B0%B7%E6%AD%8C%E7%BF%BB%E8%AF%91.png)谷歌翻译；
 
-![搜狗智深](README/%E6%90%9C%E7%8B%97%E6%99%BA%E6%B7%B1.png)搜狗深智引擎；
+![搜狗智深](README.assets/%E6%90%9C%E7%8B%97%E6%99%BA%E6%B7%B1.png)搜狗深智引擎；
 
-![腾讯云](README/%E8%85%BE%E8%AE%AF%E4%BA%91.jpg)腾讯云
+![腾讯云](README.assets/%E8%85%BE%E8%AE%AF%E4%BA%91.jpg)腾讯云
 
 平台的翻译 API。
 
@@ -35,6 +35,76 @@
 由于使用了鼠标和键盘钩子但是没有购买数字签名（太贵，买不起），软件会被 Windows Defender 报毒，不放心的小伙伴可以使用火绒等杀毒软件查杀。
 
 软件使用以最低权限运行，只有安装程序需要获取高一些的权限，因为要写入到 Program Files(x86) 文件夹，因为要使用低权限运行，所以没有在安装完后运行软件。
+
+# 更新历史
+
+## 2021年9月23日 版本：V1.1.0
+
+1. Google 翻译 API 变更；
+
+2. Google 语音 API 变更；
+
+3. 为避免 Google 再次出现这种问题，添加了一层自定义 Google 翻译数据结构；
+
+   ```javascript
+   // Google 自定义数据结构
+   const dataStructure = {
+       // 源语言
+       fromLanguage: null,
+       // 目标语言
+       toLanguage: null,
+       // 源文
+       sourceText: null,
+       // 释义
+       paraphrase: null,
+       // 源文读音
+       sourceTextPronunciation: null,
+       // 译文读音
+       paraphrasePronunciation: null,
+       // 词性列表
+       partOfSpeechList: [{
+           // 词性
+           partOfSpeech: null,
+           // 该词性下的释义列表
+           paraphraseList: [{
+               // 释义
+               paraphrase: null,
+               // 该释义的使用频率
+               usageFrequency: 0.1,
+               // 该词性下的释义对应的近义词
+               synonymList: [null],
+           }],
+       }],
+       // 定义列表，，包含同义词
+       definitionList: [{
+           // 词性
+           partOfSpeech: null,
+           // 该词性下的定义
+           definitionList: {
+               // 英文定义
+               definition: null,
+               // 例句
+               exampleSentence: null,
+               // 该定义下的同义词列表
+               synonymList: [null],
+               // 非正式同义词
+               otherSynonym: {
+                   // 非正式同义词性质
+                   nature: null,
+                   // 该非正式同义词下的同义词列表
+                   list: [null],
+               },
+           }
+       }],
+       // 例句
+       exampleSentenceList: [null],
+   };
+   ```
+
+
+4. 新增开发 Google 历史数据转换工具，其可将旧 Google 数据结构转新 Google 自定义数据结构，使用说明请看附录（**注：请做好数据备份！！！软件所有数据都存于 database.db 中！！！如果大家还需要历史数据，请务必先使用 Google 历史数据转换工具后，再安装 Translator V1.1.0。新用户请忽略。新版 Translator 不支持旧 Google 数据，如果还需要旧数据，则使用 Google 历史数据转换工具进行转换，如果不需要，在遇到历史数据错误时，使用 Ctrl + Enter 进行网络请求更新数据。**）；
+5. Google 翻译 UI 有细微调整，具体包括：① 词性后不列出所有词义；② 定义的例句前添加 `e.g.` 前缀以表示其为例句；③ 同义词位于定义的例句后，不再单独列出。
+
 
 # 图标
 
@@ -114,7 +184,7 @@
 
 双击桌面图标，启动后在任务栏小图标列表中可以看到程序图标（如果没有，看看是不是被收起来了）。
 
-![托盘图标](README/%E6%89%98%E7%9B%98%E5%9B%BE%E6%A0%87.png)
+![托盘图标](README.assets/%E6%89%98%E7%9B%98%E5%9B%BE%E6%A0%87.png)
 
 ## 打开主界面
 
@@ -122,7 +192,7 @@
 
 或使用[自定义快捷键](#修改显示隐藏主界面快捷键)打开。
 
-![打开主界面](README/%E6%89%93%E5%BC%80%E4%B8%BB%E7%95%8C%E9%9D%A2.gif)
+![打开主界面](README.assets/%E6%89%93%E5%BC%80%E4%B8%BB%E7%95%8C%E9%9D%A2.gif)
 
 ## 打开&关闭关于对话框
 
@@ -130,7 +200,7 @@
 
 注：Ctrl + <u>I</u>nformation。
 
-![打开&关闭关于对话框](README/%E6%89%93%E5%BC%80&%E5%85%B3%E9%97%AD%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
+![打开&关闭关于对话框](README.assets/%E6%89%93%E5%BC%80&%E5%85%B3%E9%97%AD%E5%85%B3%E4%BA%8E%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
 
 ## 打开&关闭设置对话框
 
@@ -140,7 +210,7 @@
 
 注2：设置不需要保存，直接使用 `Esc` 退出即可。
 
-![打开&关闭设置对话框](README/%E6%89%93%E5%BC%80&%E5%85%B3%E9%97%AD%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
+![打开&关闭设置对话框](README.assets/%E6%89%93%E5%BC%80&%E5%85%B3%E9%97%AD%E8%AE%BE%E7%BD%AE%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
 
 ## 打开&关闭单词本对话框
 
@@ -148,7 +218,7 @@
 
 注：Ctrl + <u>B</u>ook。
 
-![打开&关闭单词本对话框](README/%E6%89%93%E5%BC%80&%E5%85%B3%E9%97%AD%E5%8D%95%E8%AF%8D%E6%9C%AC%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
+![打开&关闭单词本对话框](README.assets/%E6%89%93%E5%BC%80&%E5%85%B3%E9%97%AD%E5%8D%95%E8%AF%8D%E6%9C%AC%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
 
 ## 打开导出至 Anki 对话框
 
@@ -156,7 +226,7 @@
 
 注：Ctrl + <u>E</u>xport。
 
-![打开导出至Anki对话框](README/%E6%89%93%E5%BC%80%E5%AF%BC%E5%87%BA%E8%87%B3Anki%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
+![打开导出至Anki对话框](README.assets/%E6%89%93%E5%BC%80%E5%AF%BC%E5%87%BA%E8%87%B3Anki%E5%AF%B9%E8%AF%9D%E6%A1%86.gif)
 
 ## 关闭关于对话框、设置对话框、单词本对话框、导出至 Anki 对话框
 
@@ -172,25 +242,25 @@
 
 通过设置的快捷键隐藏，默认为：Crtl  + Shift + Alt + 0（注意是数字 0），当主界面显示且输入框获得焦点时（即输入框内有光标闪烁），主界面会隐藏，**当主界面显示且输入框未获得焦点时，通过快捷键会使输入框获得焦点**。
 
-![隐藏主界面-通过设置的快捷键隐藏](README/%E9%9A%90%E8%97%8F%E4%B8%BB%E7%95%8C%E9%9D%A2-%E9%80%9A%E8%BF%87%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%90%E8%97%8F.gif)
+![隐藏主界面-通过设置的快捷键隐藏](README.assets/%E9%9A%90%E8%97%8F%E4%B8%BB%E7%95%8C%E9%9D%A2-%E9%80%9A%E8%BF%87%E8%AE%BE%E7%BD%AE%E7%9A%84%E5%BF%AB%E6%8D%B7%E9%94%AE%E9%9A%90%E8%97%8F.gif)
 
 ### 通过鼠标移动到主界面所在屏幕的角落隐藏
 
 通过鼠标移动到主界面所在屏幕的角落隐藏主界面，默认鼠标相对左上，左下，右上，右下角10各像素时，主界面隐藏，可在设置界面中设置这些参数。
 
-![隐藏主界面-通过鼠标移动到主界面所在屏幕的角落隐藏](README/%E9%9A%90%E8%97%8F%E4%B8%BB%E7%95%8C%E9%9D%A2-%E9%80%9A%E8%BF%87%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%88%B0%E4%B8%BB%E7%95%8C%E9%9D%A2%E6%89%80%E5%9C%A8%E5%B1%8F%E5%B9%95%E7%9A%84%E8%A7%92%E8%90%BD%E9%9A%90%E8%97%8F.gif)
+![隐藏主界面-通过鼠标移动到主界面所在屏幕的角落隐藏](README.assets/%E9%9A%90%E8%97%8F%E4%B8%BB%E7%95%8C%E9%9D%A2-%E9%80%9A%E8%BF%87%E9%BC%A0%E6%A0%87%E7%A7%BB%E5%8A%A8%E5%88%B0%E4%B8%BB%E7%95%8C%E9%9D%A2%E6%89%80%E5%9C%A8%E5%B1%8F%E5%B9%95%E7%9A%84%E8%A7%92%E8%90%BD%E9%9A%90%E8%97%8F.gif)
 
 ### Esc 快捷键
 
 或是主界面聚焦的情况下通过 Esc 隐藏。
 
-![隐藏主界面-Esc快捷键](README/%E9%9A%90%E8%97%8F%E4%B8%BB%E7%95%8C%E9%9D%A2-Esc%E5%BF%AB%E6%8D%B7%E9%94%AE.gif)
+![隐藏主界面-Esc快捷键](README.assets/%E9%9A%90%E8%97%8F%E4%B8%BB%E7%95%8C%E9%9D%A2-Esc%E5%BF%AB%E6%8D%B7%E9%94%AE.gif)
 
 ## 配置各平台 API 的 Key 和 密钥
 
 打开设置界面，在各个公司的配置框中填写相应的配置。
 
-![各个公司配置框](README/%E5%90%84%E4%B8%AA%E5%85%AC%E5%8F%B8%E9%85%8D%E7%BD%AE%E6%A1%86.png)
+![各个公司配置框](README.assets/%E5%90%84%E4%B8%AA%E5%85%AC%E5%8F%B8%E9%85%8D%E7%BD%AE%E6%A1%86.png)
 
 ### 启用谷歌翻译
 
@@ -247,7 +317,7 @@
 
 注2：如果某公司不支持源语言或目标语言，则会显示不支持语言。
 
-![普通翻译](README/%E6%99%AE%E9%80%9A%E7%BF%BB%E8%AF%91.gif)
+![普通翻译](README.assets/%E6%99%AE%E9%80%9A%E7%BF%BB%E8%AF%91.gif)
 
 ## 翻译历史词句
 
@@ -257,7 +327,7 @@
 
 说明：为什么这么设计？因为各个平台的 `自动检测` 功能并不是每次检测相同源文得到的源语言都是一致的。比如：翻译 `DENO`，源语言设置为 `自动检测`，目标语言设置为 `中文`，会发现百度翻译识别为 `世界语`， 谷歌识别为 `日语`，有道翻译设别为 `葡萄牙语`，腾讯翻译君识别为 `德语`，搜狗翻译识别为 `英语`。
 
-![普通翻译-deno](README/%E6%99%AE%E9%80%9A%E7%BF%BB%E8%AF%91-deno.gif)
+![普通翻译-deno](README.assets/%E6%99%AE%E9%80%9A%E7%BF%BB%E8%AF%91-deno.gif)
 
 ## 词句读音
 
@@ -265,7 +335,7 @@
 
 注：设置中读音来源公司需正确配置且启用才能正常使用谷歌翻译。比如，设置中读音来源选择的是百度翻译，但是百度翻译未正确配置或启用，则在主界面中是无法显示百度翻译的，那也就无法播放正确的读音。
 
-![词句读音](README/%E8%AF%8D%E5%8F%A5%E8%AF%BB%E9%9F%B3.gif)
+![词句读音](README.assets/%E8%AF%8D%E5%8F%A5%E8%AF%BB%E9%9F%B3.gif)
 
 ### 源文读音
 
@@ -279,7 +349,7 @@
 
 在主界面输入框没有内容的情况下，按 `↑` 键和 `↓` 键分别回溯翻译历史的前一个和后一个。
 
-![回溯翻译历史](README/%E5%9B%9E%E6%BA%AF%E7%BF%BB%E8%AF%91%E5%8E%86%E5%8F%B2.gif)
+![回溯翻译历史](README.assets/%E5%9B%9E%E6%BA%AF%E7%BF%BB%E8%AF%91%E5%8E%86%E5%8F%B2.gif)
 
 ## 收藏翻译内容 & 取消收藏翻译内容
 
@@ -287,7 +357,7 @@
 
 在主界面按下 `Ctrl + D` 即可取消收藏当前显示在主界面中的翻译。
 
-![收藏翻译内容&取消收藏翻译内容](README/%E6%94%B6%E8%97%8F%E7%BF%BB%E8%AF%91%E5%86%85%E5%AE%B9&%E5%8F%96%E6%B6%88%E6%94%B6%E8%97%8F%E7%BF%BB%E8%AF%91%E5%86%85%E5%AE%B9.gif)
+![收藏翻译内容&取消收藏翻译内容](README.assets/%E6%94%B6%E8%97%8F%E7%BF%BB%E8%AF%91%E5%86%85%E5%AE%B9&%E5%8F%96%E6%B6%88%E6%94%B6%E8%97%8F%E7%BF%BB%E8%AF%91%E5%86%85%E5%AE%B9.gif)
 
 ## 查看收藏的词句列表
 
@@ -303,13 +373,13 @@
 
 注：当源语言为 `自动检测` 时，无法交换源语言与目标语言。
 
-![交换源语言与目标语言](README/%E4%BA%A4%E6%8D%A2%E6%BA%90%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%9B%AE%E6%A0%87%E8%AF%AD%E8%A8%80.gif)
+![交换源语言与目标语言](README.assets/%E4%BA%A4%E6%8D%A2%E6%BA%90%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%9B%AE%E6%A0%87%E8%AF%AD%E8%A8%80.gif)
 
 ## 重新输入
 
 在主界面输入框没有内容的情况下，按 `→` 键重新输入上一次翻译的文本。
 
-![重新输入](README/%E9%87%8D%E6%96%B0%E8%BE%93%E5%85%A5.gif)
+![重新输入](README.assets/%E9%87%8D%E6%96%B0%E8%BE%93%E5%85%A5.gif)
 
 ## 粘贴剪切板的内容
 
@@ -437,7 +507,7 @@
 
 使用 `Ctrl + N` 开启命名功能（也叫程序员模式）。此时主界面底部出现6个按钮，分别对应小写驼峰法命名，大写驼峰法命名，小写下划线命名，大写下划线命名，小写减号命名，大写减号命名。
 
-![命名模式-功能](README/%E5%91%BD%E5%90%8D%E6%A8%A1%E5%BC%8F-%E5%8A%9F%E8%83%BD.gif)
+![命名模式-功能](README.assets/%E5%91%BD%E5%90%8D%E6%A8%A1%E5%BC%8F-%E5%8A%9F%E8%83%BD.gif)
 
 注1：Ctrl + <u>N</u>ame。
 
@@ -515,3 +585,19 @@
 注2：支持 HTML5 和 CSS3。
 
 注3：JS 支持的语法为  [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm) 标准。
+
+# 附录
+
+## Google 历史数据转换工具使用说明
+
+### 选择 Translator 数据库文件
+
+![image-20210923103341744](README.assets/image-20210923103341744.png)
+
+点击 `选择数据库文件按钮` ，在弹出的文件选择对话框中选择 Translator 的数据库文件，数据库文件名为 `database.db`。一般情况下，数据库文件保存在两个位置下，如果 Translator 安装在 `C:\Program Files (x86)` 文件夹中，则该文件可能在 `C:\Program Files (x86)\Translator` 或 `C:\Users\<用户名>\AppData\Local\VirtualStore\Program Files (x86)\Translator` 中，如果安装在其他目录，则该文件可能在 `Translator安装目录` 或 `C:\Users\<用户名>\AppData\Local\VirtualStore\Program Files (x86)\Translator` 中。
+
+### 开始转换
+
+点击开始转换按钮，等待日志不再输出，即转换结束。
+
+![image-20210923104046591](README.assets/image-20210923104046591.png)
